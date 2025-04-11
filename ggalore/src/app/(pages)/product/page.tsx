@@ -6,9 +6,9 @@ import React from "react";
 
 function ProductPage() {
   return (
-    <main>
-      <section className="py-8 bg-background-gray md:py-16 antialiased">
-        <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0">
+    <main className="mx-auto md:max-w-7xl px-6">
+      <section className="py-8  md:py-16 antialiased">
+        <div>
           <div className="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
             <div className="w-full">
               <Image
