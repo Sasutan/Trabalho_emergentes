@@ -13,3 +13,44 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Arma {
+  id            Int      @id @default(autoincrement())
+  nome          String   @db.VarChar(80)
+  calibre       String   @db.VarChar(20)
+  numDesparos   Int      
+  fabricante    Fabricante @relation(fields: [fabricanteId], references: [id])
+  fabricanteId  Int     
+  testes       Teste[]
+  @@map("armas")
+}
+
+model Fabricante {
+  id            Int      @id @default(autoincrement())
+  nome          String   @db.VarChar(80)
+  paisOrigem    String   @db.VarChar(80)
+  anoFundacao   Int      
+  tipo          String   @db.VarChar(20)
+  arma          Arma[]
+  @@map("fabricantes")
+}
+
+model Cliente {
+  id            Int      @id @default(autoincrement())
+  nome          String   @db.VarChar(80)
+  email         String   @db.VarChar(80)
+  licencaEsp    String   @db.VarChar(20)
+  testes       Teste[]
+  @@map("clientes")
+}
+
+model Teste {
+  id            Int      @id @default(autoincrement())
+  data          DateTime
+  resultado     String   @db.VarChar(20)
+  cliente       Cliente  @relation(fields: [clienteId], references: [id])
+  clienteId     Int
+  arma          Arma     @relation(fields: [armaId], references: [id])
+  armaId        Int
+  @@map("testes")
+}
