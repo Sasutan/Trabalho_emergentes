@@ -1,2 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import "tailwindcss";
 
+@theme {
+  --color-background-gray: oklch(0.18 0.002 106.6);
+  --color-accent-gray: oklch(0.31 0.0052 106.7);
+  --color-primary-red: oklch(0.62 0.2465 30.05);
+  --color-text-gray: oklch(0.77 0.0087 91.51);
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.font-tinos {
+  font-family: "Tinos", serif;
+}
