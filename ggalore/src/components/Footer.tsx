@@ -56,10 +56,10 @@ function Footer() {
         </div>
         <span className="block text-sm sm:text-center text-gray-400 mt-10">
           © 2023
-          <Link href="/" className="hover:underline font-tinos">
-            GUNS GALORE™
+          <Link href="/" className="mx-2 hover:underline font-tinos">
+            GUNS GALORE™.
           </Link>
-          . All Rights Reserved.
+          All Rights Reserved.
         </span>
       </div>
 
