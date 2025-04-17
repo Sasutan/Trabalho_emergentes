@@ -48,7 +48,7 @@ function Adicionar() {
             type="text"
             name="nome"
             id="nome"
-            className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+            className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm block w-full p-2.5"
             required
           />
         </div>
@@ -61,7 +61,7 @@ function Adicionar() {
             type="text"
             name="calibre"
             id="calibre"
-            className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+            className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm block w-full p-2.5"
             required
           />
         </div>
@@ -74,7 +74,7 @@ function Adicionar() {
             type="number"
             name="preco"
             id="preco"
-            className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+            className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm block w-full p-2.5"
             required
           />
         </div>
@@ -90,7 +90,7 @@ function Adicionar() {
             type="number"
             name="numDisparos"
             id="numDisparos"
-            className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+            className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm block w-full p-2.5"
             required
           />
         </div>
@@ -106,7 +106,7 @@ function Adicionar() {
             type="number"
             name="fabricanteId"
             id="fabricanteId"
-            className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+            className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm block w-full p-2.5"
             required
           />
         </div>
@@ -119,7 +119,7 @@ function Adicionar() {
             type="text"
             name="foto"
             id="foto"
-            className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+            className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm block w-full p-2.5"
             required
           />
         </div>
@@ -131,7 +131,7 @@ function Adicionar() {
           <select
             name="tipoArma"
             id="tipoArma"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm block w-full p-2.5"
             required
           >
             <option value="">Selecione</option>
@@ -145,7 +145,7 @@ function Adicionar() {
 
         <button
           type="submit"
-          className=" w-fit h-fit ml-auto bg-primary-red hover:bg-primary-red/90 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+          className=" w-fit h-fit ml-auto bg-primary-red hover:bg-primary-red/90 font-medium rounded-sm text-sm px-5 py-2.5 text-center"
         >
           Cadastrar Produto
         </button>

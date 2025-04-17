@@ -1,189 +1,145 @@
-import { PrismaClient, tipoArmas } from "@prisma/client"
+import { PrismaClient, tipoArmas } from "@prisma/client";
 import { Router } from "express";
 import { z } from "zod";
 
-const prisma = new PrismaClient()
-const router = Router()
+const prisma = new PrismaClient();
+const router = Router();
 
 const armaSchema = z.object({
   nome: z.string(),
-  calibre : z.string(),
+  calibre: z.string(),
   preco: z.number(),
   numDisparos: z.number(),
   fabricanteId: z.number(),
   foto: z.string(),
   tipoArma: z.nativeEnum(tipoArmas),
-})
+});
 
-router.get('/', async (req, res) => {
-    try {
-        const armas = await prisma.arma.findMany({
-            include: {
-                fabricante: true,
-            },
-        })
-        res.status(200).json(armas)
-    } catch (error) {
-        res.status(500).json({ erro: error})
-    }
-})
+router.get("/", async (req, res) => {
+  try {
+    const armas = await prisma.arma.findMany({
+      include: {
+        fabricante: true,
+      },
+    });
+    res.status(200).json(armas);
+  } catch (error) {
+    res.status(500).json({ erro: error });
+  }
+});
 
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
+  const valida = armaSchema.safeParse(req.body);
+  if (!valida.success) {
+    res.status(400).json({ erro: valida.error });
+    return;
+  }
 
-    const valida = armaSchema.safeParse(req.body)
-    if (!valida.success) {
-        res.status(400).json({ erro: valida.error })
-        return
-    }
+  const { nome, calibre, numDisparos, fabricanteId, foto, preco, tipoArma } =
+    valida.data;
 
-    const { nome, calibre, numDisparos, fabricanteId, foto, preco, tipoArma } = valida.data
-  
-    try {
-        const armas = await prisma.arma.create({
-            data: {
-                nome,
-                calibre,
-                preco,
-                numDisparos,
-                fabricanteId,
-                foto,
-                tipoArma,
-            },
-        })
-        res.status(201).json(armas)
-    }
-    catch (error) {
-        res.status(400).json({ error })
-    }
-})
+  try {
+    const armas = await prisma.arma.create({
+      data: {
+        nome,
+        calibre,
+        preco,
+        numDisparos,
+        fabricanteId,
+        foto,
+        tipoArma,
+      },
+    });
+    res.status(201).json(armas);
+  } catch (error) {
+    res.status(400).json({ error });
+  }
+});
 
 router.delete("/:id", async (req, res) => {
-    const { id } = req.params
-  
-    try {
-      const armas = await prisma.arma.delete({
-        where: { id: Number(id) }
-      })
-      res.status(200).json(armas)
-    } catch (error) {
-      res.status(400).json({ erro: error })
-    }
-  })
+  const { id } = req.params;
 
-router.put('/:id', async (req, res) => {
-    const { id } = req.params
-    
-    const valida = armaSchema.safeParse(req.body)
-    if (!valida.success) {
-        res.status(400).json({ erro: valida.error })
-        return
-    }
+  try {
+    const armas = await prisma.arma.delete({
+      where: { id: Number(id) },
+    });
+    res.status(200).json(armas);
+  } catch (error) {
+    res.status(400).json({ erro: error });
+  }
+});
 
-    const { nome, calibre, numDisparos, fabricanteId, foto, preco, tipoArma } = valida.data
+router.put("/:id", async (req, res) => {
+  const { id } = req.params;
 
-    try {
-        const armas = await prisma.arma.update({
-            where: { id: Number(id) },
-            data: {
-                nome,
-                calibre,
-                numDisparos,
-                fabricanteId,
-                foto,
-                preco,
-                tipoArma,
-            },
-        })
-        res.status(200).json(armas)
-    }
-    catch (error) {
-        res.status(400).json({ error })
-    }
-})
+  const valida = armaSchema.safeParse(req.body);
+  if (!valida.success) {
+    res.status(400).json({ erro: valida.error });
+    return;
+  }
 
-// router.get("/pesquisa/:termo", async (req, res) => {
-//     const { termo } = req.params
+  const { nome, calibre, numDisparos, fabricanteId, foto, preco, tipoArma } =
+    valida.data;
 
-//     const termoNumero = Number(termo)
-
-//     if (isNaN(termoNumero)){
-//         try {
-//             const armas = await prisma.arma.findMany({
-//                 include: {
-//                     fabricante: true,
-//                 },
-//                 where: {
-//                     OR: [
-//                         { nome: { contains: termo, mode: "insensitive" } },
-//                         { calibre: { contains: termo, mode: "insensitive" } },
-//                     ]
-//                 }
-//             })
-//             res.status(200).json(armas)
-//         } catch (error) {
-//             res.status(500).json({ erro: error })
-//         }
-//     } else {
-//         if (termoNumero <= 3000) {
-//             try { 
-//                 const armas = await prisma.arma.findMany({
-//                     include: { 
-//                         fabricante: true,
-//                     },
-//                     where : { numDisparos: termoNumero }
-//                 })
-//                 res.status(200).json(armas)
-//             } catch (error) {
-//                 res.status(500).json({ erro: error })
-//             }
-//         } else {
-//             try {
-//                 const armas = await prisma.arma.findMany({
-//                     include: {
-//                         fabricante:true,
-//                     },
-//                     where: { preco: { lte: termoNumero }}
-//                 })
-//                 res.status(200).json(armas)
-//             } catch (error) {
-//                 res.status(500).json({ erro: error })
-//             }
-//         }
-//     }
-// })
+  try {
+    const armas = await prisma.arma.update({
+      where: { id: Number(id) },
+      data: {
+        nome,
+        calibre,
+        numDisparos,
+        fabricanteId,
+        foto,
+        preco,
+        tipoArma,
+      },
+    });
+    res.status(200).json(armas);
+  } catch (error) {
+    res.status(400).json({ error });
+  }
+});
 
 router.get("/pesquisa/:termo", async (req, res) => {
-    const { termo } = req.params
+  const { termo } = req.params;
 
-    try {
-        const armas = await prisma.arma.findMany({
-            include: {
-                fabricante: true,
-            },
-            where: {
-                nome: {
-                    contains: termo,
-                    mode: "insensitive",
-                },
-            },
-        })
-        res.status(200).json(armas)
-    } catch (error) {
-        res.status(500).json({ erro: error })
-    }
-})
+  try {
+    const armas = await prisma.arma.findMany({
+      include: {
+        fabricante: true,
+      },
+      where: {
+        nome: {
+          contains: termo,
+          mode: "insensitive",
+        },
+      },
+    });
+    res.status(200).json(armas);
+  } catch (error) {
+    res.status(500).json({ erro: error });
+  }
+});
 
-router.get("/armas/:id", (req, res) => {
-    const id = Number(req.params.id);
-    const arma = armas.find((a) => a.id === id);
-  
-    if (!arma) {
-      return res.status(404).json({ error: "Arma não encontrada" });
-    }
-  
-    return res.json(arma);
-  });
+// router.get("/:id", async (req, res) => {
+//   const id = Number(req.params.id);
 
+//   if (isNaN(id)) {
+//     return res.status(400).json({ error: "ID inválido" });
+//   }
 
- 
-export default router
+//   try {
+//     const arma = await prisma.arma.findFirst({
+//       where: { id: id },
+//     });
+
+//     if (!arma) {
+//       return res.status(404).json({ error: "Arma não encontrada" });
+//     }
+
+//     return res.json(arma);
+//   } catch (error) {
+//     return res.status(500).json({ error: "Erro interno do servidor" });
+//   }
+// });
+export default router;

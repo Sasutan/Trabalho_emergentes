@@ -12,13 +12,15 @@ export function CardProduto({ data }: { data: ArmaItf }) {
           {data.tipoArma}
         </p>
 
-        <Image
-          className="rounded-sm w-full"
-          src={data.foto}
-          width={220}
-          height={220}
-          alt="product image"
-        />
+        <div className="w-full aspect-square object-cover bg-white flex items-center justify-center">
+          <Image
+            className="rounded-sm w-5/6"
+            src={data.foto}
+            width={220}
+            height={220}
+            alt="product image"
+          />
+        </div>
 
         <div className="mt-2">
           <p className="text-primary-red underline font-semibold text-sm ml-auto w-fit uppercase">

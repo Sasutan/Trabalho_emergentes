@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header2 from "@/components/Header2";
 import Footer from "@/components/Footer";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Gun's Galore",
@@ -19,6 +20,7 @@ export default function RootLayout({
         <Header2 />
         {children}
         <Footer />
+        <Toaster />
       </body>
     </html>
   );
