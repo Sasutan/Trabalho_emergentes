@@ -31,7 +31,7 @@ export default function Home() {
       </h1>
       <div className="flex justify-between items-center mt-10 px-5 md:max-w-7xl mx-auto">
         <Filtro />
-        <SearchBar />
+        <SearchBar setArmas={setArmas} />
       </div>
 
       {/* <!-- MAIN LISTING --> */}

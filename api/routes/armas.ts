@@ -101,4 +101,78 @@ router.put('/:id', async (req, res) => {
     }
 })
 
+// router.get("/pesquisa/:termo", async (req, res) => {
+//     const { termo } = req.params
+
+//     const termoNumero = Number(termo)
+
+//     if (isNaN(termoNumero)){
+//         try {
+//             const armas = await prisma.arma.findMany({
+//                 include: {
+//                     fabricante: true,
+//                 },
+//                 where: {
+//                     OR: [
+//                         { nome: { contains: termo, mode: "insensitive" } },
+//                         { calibre: { contains: termo, mode: "insensitive" } },
+//                     ]
+//                 }
+//             })
+//             res.status(200).json(armas)
+//         } catch (error) {
+//             res.status(500).json({ erro: error })
+//         }
+//     } else {
+//         if (termoNumero <= 3000) {
+//             try { 
+//                 const armas = await prisma.arma.findMany({
+//                     include: { 
+//                         fabricante: true,
+//                     },
+//                     where : { numDisparos: termoNumero }
+//                 })
+//                 res.status(200).json(armas)
+//             } catch (error) {
+//                 res.status(500).json({ erro: error })
+//             }
+//         } else {
+//             try {
+//                 const armas = await prisma.arma.findMany({
+//                     include: {
+//                         fabricante:true,
+//                     },
+//                     where: { preco: { lte: termoNumero }}
+//                 })
+//                 res.status(200).json(armas)
+//             } catch (error) {
+//                 res.status(500).json({ erro: error })
+//             }
+//         }
+//     }
+// })
+
+router.get("/pesquisa/:termo", async (req, res) => {
+    const { termo } = req.params
+
+    try {
+        const armas = await prisma.arma.findMany({
+            include: {
+                fabricante: true,
+            },
+            where: {
+                nome: {
+                    contains: termo,
+                    mode: "insensitive",
+                },
+            },
+        })
+        res.status(200).json(armas)
+    } catch (error) {
+        res.status(500).json({ erro: error })
+    }
+})
+
+
+ 
 export default router

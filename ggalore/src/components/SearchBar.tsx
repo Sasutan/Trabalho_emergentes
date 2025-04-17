@@ -1,8 +1,41 @@
+import { ArmaItf } from "@/utils/types/ArmaItf";
 import React from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 
-function SearchBar() {
+type Inputs = {
+  termo: string
+}
+
+type InputPesquisaProps = {
+  setArmas: React.Dispatch<React.SetStateAction<ArmaItf[]>>
+}
+
+
+export function SearchBar({ setArmas }: InputPesquisaProps) {
+  const { register, handleSubmit, reset, setFocus } = useForm<Inputs>()
+
+  async function enviaPesquisa(data: Inputs) {
+    if (data.termo.length < 2) {
+      toast.error("A pesquisa deve ter no mínimo 2 caracteres")
+      return
+    }
+
+    const response = await fetch(`${process.env.NEXT_PUBLIC_URL_API}/armas/pesquisa/${data.termo}`)
+    const dados = await response.json()
+
+    if (dados.length == 0) {
+      toast.error("Nenhum resultado encontrado")
+      setFocus("termo")
+      reset({ termo: "" })
+      return
+    }
+
+    setArmas(dados)
+  }
+
   return (
-    <form className="w-1/2 my-4">
+    <form className="w-1/2 my-4" onSubmit={handleSubmit(enviaPesquisa)}>
       <label
         htmlFor="default-search"
         className="mb-2 text-sm font-medium sr-only text-white"
@@ -32,6 +65,7 @@ function SearchBar() {
           id="default-search"
           className="block w-full p-4 ps-10 text-sm border rounded-sm bg-accent-gray border-gray-600 placeholder-gray-400 text-white"
           placeholder="Encontre o que busca..."
+          {...register("termo", { required: true })}
           required
         />
         <button
