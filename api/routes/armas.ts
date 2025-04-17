@@ -57,6 +57,19 @@ router.post('/', async (req, res) => {
     }
 })
 
+router.delete("/:id", async (req, res) => {
+    const { id } = req.params
+  
+    try {
+      const armas = await prisma.arma.delete({
+        where: { id: Number(id) }
+      })
+      res.status(200).json(armas)
+    } catch (error) {
+      res.status(400).json({ erro: error })
+    }
+  })
+
 router.put('/:id', async (req, res) => {
     const { id } = req.params
     
