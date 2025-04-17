@@ -18,7 +18,7 @@ model Arma {
   id           Int        @id @default(autoincrement())
   nome         String     @db.VarChar(80)
   calibre      String     @db.VarChar(20)
-  numDesparos  Int
+  numDisparos  Int
   fabricante   Fabricante @relation(fields: [fabricanteId], references: [id])
   fabricanteId Int
   testes       Teste[]
@@ -31,7 +31,6 @@ model Fabricante {
   nome        String @db.VarChar(80)
   paisOrigem  String @db.VarChar(80)
   anoFundacao Int
-  tipo        String @db.VarChar(20)
   arma        Arma[]
 
   @@map("fabricantes")

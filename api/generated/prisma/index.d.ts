@@ -1248,13 +1248,13 @@ export namespace Prisma {
 
   export type ArmaAvgAggregateOutputType = {
     id: number | null
-    numDesparos: number | null
+    numDisparos: number | null
     fabricanteId: number | null
   }
 
   export type ArmaSumAggregateOutputType = {
     id: number | null
-    numDesparos: number | null
+    numDisparos: number | null
     fabricanteId: number | null
   }
 
@@ -1262,7 +1262,7 @@ export namespace Prisma {
     id: number | null
     nome: string | null
     calibre: string | null
-    numDesparos: number | null
+    numDisparos: number | null
     fabricanteId: number | null
   }
 
@@ -1270,7 +1270,7 @@ export namespace Prisma {
     id: number | null
     nome: string | null
     calibre: string | null
-    numDesparos: number | null
+    numDisparos: number | null
     fabricanteId: number | null
   }
 
@@ -1278,7 +1278,7 @@ export namespace Prisma {
     id: number
     nome: number
     calibre: number
-    numDesparos: number
+    numDisparos: number
     fabricanteId: number
     _all: number
   }
@@ -1286,13 +1286,13 @@ export namespace Prisma {
 
   export type ArmaAvgAggregateInputType = {
     id?: true
-    numDesparos?: true
+    numDisparos?: true
     fabricanteId?: true
   }
 
   export type ArmaSumAggregateInputType = {
     id?: true
-    numDesparos?: true
+    numDisparos?: true
     fabricanteId?: true
   }
 
@@ -1300,7 +1300,7 @@ export namespace Prisma {
     id?: true
     nome?: true
     calibre?: true
-    numDesparos?: true
+    numDisparos?: true
     fabricanteId?: true
   }
 
@@ -1308,7 +1308,7 @@ export namespace Prisma {
     id?: true
     nome?: true
     calibre?: true
-    numDesparos?: true
+    numDisparos?: true
     fabricanteId?: true
   }
 
@@ -1316,7 +1316,7 @@ export namespace Prisma {
     id?: true
     nome?: true
     calibre?: true
-    numDesparos?: true
+    numDisparos?: true
     fabricanteId?: true
     _all?: true
   }
@@ -1411,7 +1411,7 @@ export namespace Prisma {
     id: number
     nome: string
     calibre: string
-    numDesparos: number
+    numDisparos: number
     fabricanteId: number
     _count: ArmaCountAggregateOutputType | null
     _avg: ArmaAvgAggregateOutputType | null
@@ -1438,7 +1438,7 @@ export namespace Prisma {
     id?: boolean
     nome?: boolean
     calibre?: boolean
-    numDesparos?: boolean
+    numDisparos?: boolean
     fabricanteId?: boolean
     fabricante?: boolean | FabricanteDefaultArgs<ExtArgs>
     testes?: boolean | Arma$testesArgs<ExtArgs>
@@ -1449,7 +1449,7 @@ export namespace Prisma {
     id?: boolean
     nome?: boolean
     calibre?: boolean
-    numDesparos?: boolean
+    numDisparos?: boolean
     fabricanteId?: boolean
     fabricante?: boolean | FabricanteDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["arma"]>
@@ -1458,7 +1458,7 @@ export namespace Prisma {
     id?: boolean
     nome?: boolean
     calibre?: boolean
-    numDesparos?: boolean
+    numDisparos?: boolean
     fabricanteId?: boolean
     fabricante?: boolean | FabricanteDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["arma"]>
@@ -1467,11 +1467,11 @@ export namespace Prisma {
     id?: boolean
     nome?: boolean
     calibre?: boolean
-    numDesparos?: boolean
+    numDisparos?: boolean
     fabricanteId?: boolean
   }
 
-  export type ArmaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome" | "calibre" | "numDesparos" | "fabricanteId", ExtArgs["result"]["arma"]>
+  export type ArmaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome" | "calibre" | "numDisparos" | "fabricanteId", ExtArgs["result"]["arma"]>
   export type ArmaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     fabricante?: boolean | FabricanteDefaultArgs<ExtArgs>
     testes?: boolean | Arma$testesArgs<ExtArgs>
@@ -1494,7 +1494,7 @@ export namespace Prisma {
       id: number
       nome: string
       calibre: string
-      numDesparos: number
+      numDisparos: number
       fabricanteId: number
     }, ExtArgs["result"]["arma"]>
     composites: {}
@@ -1924,7 +1924,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Arma", 'Int'>
     readonly nome: FieldRef<"Arma", 'String'>
     readonly calibre: FieldRef<"Arma", 'String'>
-    readonly numDesparos: FieldRef<"Arma", 'Int'>
+    readonly numDisparos: FieldRef<"Arma", 'Int'>
     readonly fabricanteId: FieldRef<"Arma", 'Int'>
   }
     
@@ -2391,7 +2391,6 @@ export namespace Prisma {
     nome: string | null
     paisOrigem: string | null
     anoFundacao: number | null
-    tipo: string | null
   }
 
   export type FabricanteMaxAggregateOutputType = {
@@ -2399,7 +2398,6 @@ export namespace Prisma {
     nome: string | null
     paisOrigem: string | null
     anoFundacao: number | null
-    tipo: string | null
   }
 
   export type FabricanteCountAggregateOutputType = {
@@ -2407,7 +2405,6 @@ export namespace Prisma {
     nome: number
     paisOrigem: number
     anoFundacao: number
-    tipo: number
     _all: number
   }
 
@@ -2427,7 +2424,6 @@ export namespace Prisma {
     nome?: true
     paisOrigem?: true
     anoFundacao?: true
-    tipo?: true
   }
 
   export type FabricanteMaxAggregateInputType = {
@@ -2435,7 +2431,6 @@ export namespace Prisma {
     nome?: true
     paisOrigem?: true
     anoFundacao?: true
-    tipo?: true
   }
 
   export type FabricanteCountAggregateInputType = {
@@ -2443,7 +2438,6 @@ export namespace Prisma {
     nome?: true
     paisOrigem?: true
     anoFundacao?: true
-    tipo?: true
     _all?: true
   }
 
@@ -2538,7 +2532,6 @@ export namespace Prisma {
     nome: string
     paisOrigem: string
     anoFundacao: number
-    tipo: string
     _count: FabricanteCountAggregateOutputType | null
     _avg: FabricanteAvgAggregateOutputType | null
     _sum: FabricanteSumAggregateOutputType | null
@@ -2565,7 +2558,6 @@ export namespace Prisma {
     nome?: boolean
     paisOrigem?: boolean
     anoFundacao?: boolean
-    tipo?: boolean
     arma?: boolean | Fabricante$armaArgs<ExtArgs>
     _count?: boolean | FabricanteCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["fabricante"]>
@@ -2575,7 +2567,6 @@ export namespace Prisma {
     nome?: boolean
     paisOrigem?: boolean
     anoFundacao?: boolean
-    tipo?: boolean
   }, ExtArgs["result"]["fabricante"]>
 
   export type FabricanteSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2583,7 +2574,6 @@ export namespace Prisma {
     nome?: boolean
     paisOrigem?: boolean
     anoFundacao?: boolean
-    tipo?: boolean
   }, ExtArgs["result"]["fabricante"]>
 
   export type FabricanteSelectScalar = {
@@ -2591,10 +2581,9 @@ export namespace Prisma {
     nome?: boolean
     paisOrigem?: boolean
     anoFundacao?: boolean
-    tipo?: boolean
   }
 
-  export type FabricanteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome" | "paisOrigem" | "anoFundacao" | "tipo", ExtArgs["result"]["fabricante"]>
+  export type FabricanteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome" | "paisOrigem" | "anoFundacao", ExtArgs["result"]["fabricante"]>
   export type FabricanteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     arma?: boolean | Fabricante$armaArgs<ExtArgs>
     _count?: boolean | FabricanteCountOutputTypeDefaultArgs<ExtArgs>
@@ -2612,7 +2601,6 @@ export namespace Prisma {
       nome: string
       paisOrigem: string
       anoFundacao: number
-      tipo: string
     }, ExtArgs["result"]["fabricante"]>
     composites: {}
   }
@@ -3041,7 +3029,6 @@ export namespace Prisma {
     readonly nome: FieldRef<"Fabricante", 'String'>
     readonly paisOrigem: FieldRef<"Fabricante", 'String'>
     readonly anoFundacao: FieldRef<"Fabricante", 'Int'>
-    readonly tipo: FieldRef<"Fabricante", 'String'>
   }
     
 
@@ -5689,7 +5676,7 @@ export namespace Prisma {
     id: 'id',
     nome: 'nome',
     calibre: 'calibre',
-    numDesparos: 'numDesparos',
+    numDisparos: 'numDisparos',
     fabricanteId: 'fabricanteId'
   };
 
@@ -5700,8 +5687,7 @@ export namespace Prisma {
     id: 'id',
     nome: 'nome',
     paisOrigem: 'paisOrigem',
-    anoFundacao: 'anoFundacao',
-    tipo: 'tipo'
+    anoFundacao: 'anoFundacao'
   };
 
   export type FabricanteScalarFieldEnum = (typeof FabricanteScalarFieldEnum)[keyof typeof FabricanteScalarFieldEnum]
@@ -5815,7 +5801,7 @@ export namespace Prisma {
     id?: IntFilter<"Arma"> | number
     nome?: StringFilter<"Arma"> | string
     calibre?: StringFilter<"Arma"> | string
-    numDesparos?: IntFilter<"Arma"> | number
+    numDisparos?: IntFilter<"Arma"> | number
     fabricanteId?: IntFilter<"Arma"> | number
     fabricante?: XOR<FabricanteScalarRelationFilter, FabricanteWhereInput>
     testes?: TesteListRelationFilter
@@ -5825,7 +5811,7 @@ export namespace Prisma {
     id?: SortOrder
     nome?: SortOrder
     calibre?: SortOrder
-    numDesparos?: SortOrder
+    numDisparos?: SortOrder
     fabricanteId?: SortOrder
     fabricante?: FabricanteOrderByWithRelationInput
     testes?: TesteOrderByRelationAggregateInput
@@ -5838,7 +5824,7 @@ export namespace Prisma {
     NOT?: ArmaWhereInput | ArmaWhereInput[]
     nome?: StringFilter<"Arma"> | string
     calibre?: StringFilter<"Arma"> | string
-    numDesparos?: IntFilter<"Arma"> | number
+    numDisparos?: IntFilter<"Arma"> | number
     fabricanteId?: IntFilter<"Arma"> | number
     fabricante?: XOR<FabricanteScalarRelationFilter, FabricanteWhereInput>
     testes?: TesteListRelationFilter
@@ -5848,7 +5834,7 @@ export namespace Prisma {
     id?: SortOrder
     nome?: SortOrder
     calibre?: SortOrder
-    numDesparos?: SortOrder
+    numDisparos?: SortOrder
     fabricanteId?: SortOrder
     _count?: ArmaCountOrderByAggregateInput
     _avg?: ArmaAvgOrderByAggregateInput
@@ -5864,7 +5850,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Arma"> | number
     nome?: StringWithAggregatesFilter<"Arma"> | string
     calibre?: StringWithAggregatesFilter<"Arma"> | string
-    numDesparos?: IntWithAggregatesFilter<"Arma"> | number
+    numDisparos?: IntWithAggregatesFilter<"Arma"> | number
     fabricanteId?: IntWithAggregatesFilter<"Arma"> | number
   }
 
@@ -5876,7 +5862,6 @@ export namespace Prisma {
     nome?: StringFilter<"Fabricante"> | string
     paisOrigem?: StringFilter<"Fabricante"> | string
     anoFundacao?: IntFilter<"Fabricante"> | number
-    tipo?: StringFilter<"Fabricante"> | string
     arma?: ArmaListRelationFilter
   }
 
@@ -5885,7 +5870,6 @@ export namespace Prisma {
     nome?: SortOrder
     paisOrigem?: SortOrder
     anoFundacao?: SortOrder
-    tipo?: SortOrder
     arma?: ArmaOrderByRelationAggregateInput
   }
 
@@ -5897,7 +5881,6 @@ export namespace Prisma {
     nome?: StringFilter<"Fabricante"> | string
     paisOrigem?: StringFilter<"Fabricante"> | string
     anoFundacao?: IntFilter<"Fabricante"> | number
-    tipo?: StringFilter<"Fabricante"> | string
     arma?: ArmaListRelationFilter
   }, "id">
 
@@ -5906,7 +5889,6 @@ export namespace Prisma {
     nome?: SortOrder
     paisOrigem?: SortOrder
     anoFundacao?: SortOrder
-    tipo?: SortOrder
     _count?: FabricanteCountOrderByAggregateInput
     _avg?: FabricanteAvgOrderByAggregateInput
     _max?: FabricanteMaxOrderByAggregateInput
@@ -5922,7 +5904,6 @@ export namespace Prisma {
     nome?: StringWithAggregatesFilter<"Fabricante"> | string
     paisOrigem?: StringWithAggregatesFilter<"Fabricante"> | string
     anoFundacao?: IntWithAggregatesFilter<"Fabricante"> | number
-    tipo?: StringWithAggregatesFilter<"Fabricante"> | string
   }
 
   export type ClienteWhereInput = {
@@ -6040,7 +6021,7 @@ export namespace Prisma {
   export type ArmaCreateInput = {
     nome: string
     calibre: string
-    numDesparos: number
+    numDisparos: number
     fabricante: FabricanteCreateNestedOneWithoutArmaInput
     testes?: TesteCreateNestedManyWithoutArmaInput
   }
@@ -6049,7 +6030,7 @@ export namespace Prisma {
     id?: number
     nome: string
     calibre: string
-    numDesparos: number
+    numDisparos: number
     fabricanteId: number
     testes?: TesteUncheckedCreateNestedManyWithoutArmaInput
   }
@@ -6057,7 +6038,7 @@ export namespace Prisma {
   export type ArmaUpdateInput = {
     nome?: StringFieldUpdateOperationsInput | string
     calibre?: StringFieldUpdateOperationsInput | string
-    numDesparos?: IntFieldUpdateOperationsInput | number
+    numDisparos?: IntFieldUpdateOperationsInput | number
     fabricante?: FabricanteUpdateOneRequiredWithoutArmaNestedInput
     testes?: TesteUpdateManyWithoutArmaNestedInput
   }
@@ -6066,7 +6047,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     nome?: StringFieldUpdateOperationsInput | string
     calibre?: StringFieldUpdateOperationsInput | string
-    numDesparos?: IntFieldUpdateOperationsInput | number
+    numDisparos?: IntFieldUpdateOperationsInput | number
     fabricanteId?: IntFieldUpdateOperationsInput | number
     testes?: TesteUncheckedUpdateManyWithoutArmaNestedInput
   }
@@ -6075,21 +6056,21 @@ export namespace Prisma {
     id?: number
     nome: string
     calibre: string
-    numDesparos: number
+    numDisparos: number
     fabricanteId: number
   }
 
   export type ArmaUpdateManyMutationInput = {
     nome?: StringFieldUpdateOperationsInput | string
     calibre?: StringFieldUpdateOperationsInput | string
-    numDesparos?: IntFieldUpdateOperationsInput | number
+    numDisparos?: IntFieldUpdateOperationsInput | number
   }
 
   export type ArmaUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     nome?: StringFieldUpdateOperationsInput | string
     calibre?: StringFieldUpdateOperationsInput | string
-    numDesparos?: IntFieldUpdateOperationsInput | number
+    numDisparos?: IntFieldUpdateOperationsInput | number
     fabricanteId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -6097,7 +6078,6 @@ export namespace Prisma {
     nome: string
     paisOrigem: string
     anoFundacao: number
-    tipo: string
     arma?: ArmaCreateNestedManyWithoutFabricanteInput
   }
 
@@ -6106,7 +6086,6 @@ export namespace Prisma {
     nome: string
     paisOrigem: string
     anoFundacao: number
-    tipo: string
     arma?: ArmaUncheckedCreateNestedManyWithoutFabricanteInput
   }
 
@@ -6114,7 +6093,6 @@ export namespace Prisma {
     nome?: StringFieldUpdateOperationsInput | string
     paisOrigem?: StringFieldUpdateOperationsInput | string
     anoFundacao?: IntFieldUpdateOperationsInput | number
-    tipo?: StringFieldUpdateOperationsInput | string
     arma?: ArmaUpdateManyWithoutFabricanteNestedInput
   }
 
@@ -6123,7 +6101,6 @@ export namespace Prisma {
     nome?: StringFieldUpdateOperationsInput | string
     paisOrigem?: StringFieldUpdateOperationsInput | string
     anoFundacao?: IntFieldUpdateOperationsInput | number
-    tipo?: StringFieldUpdateOperationsInput | string
     arma?: ArmaUncheckedUpdateManyWithoutFabricanteNestedInput
   }
 
@@ -6132,14 +6109,12 @@ export namespace Prisma {
     nome: string
     paisOrigem: string
     anoFundacao: number
-    tipo: string
   }
 
   export type FabricanteUpdateManyMutationInput = {
     nome?: StringFieldUpdateOperationsInput | string
     paisOrigem?: StringFieldUpdateOperationsInput | string
     anoFundacao?: IntFieldUpdateOperationsInput | number
-    tipo?: StringFieldUpdateOperationsInput | string
   }
 
   export type FabricanteUncheckedUpdateManyInput = {
@@ -6147,7 +6122,6 @@ export namespace Prisma {
     nome?: StringFieldUpdateOperationsInput | string
     paisOrigem?: StringFieldUpdateOperationsInput | string
     anoFundacao?: IntFieldUpdateOperationsInput | number
-    tipo?: StringFieldUpdateOperationsInput | string
   }
 
   export type ClienteCreateInput = {
@@ -6296,13 +6270,13 @@ export namespace Prisma {
     id?: SortOrder
     nome?: SortOrder
     calibre?: SortOrder
-    numDesparos?: SortOrder
+    numDisparos?: SortOrder
     fabricanteId?: SortOrder
   }
 
   export type ArmaAvgOrderByAggregateInput = {
     id?: SortOrder
-    numDesparos?: SortOrder
+    numDisparos?: SortOrder
     fabricanteId?: SortOrder
   }
 
@@ -6310,7 +6284,7 @@ export namespace Prisma {
     id?: SortOrder
     nome?: SortOrder
     calibre?: SortOrder
-    numDesparos?: SortOrder
+    numDisparos?: SortOrder
     fabricanteId?: SortOrder
   }
 
@@ -6318,13 +6292,13 @@ export namespace Prisma {
     id?: SortOrder
     nome?: SortOrder
     calibre?: SortOrder
-    numDesparos?: SortOrder
+    numDisparos?: SortOrder
     fabricanteId?: SortOrder
   }
 
   export type ArmaSumOrderByAggregateInput = {
     id?: SortOrder
-    numDesparos?: SortOrder
+    numDisparos?: SortOrder
     fabricanteId?: SortOrder
   }
 
@@ -6377,7 +6351,6 @@ export namespace Prisma {
     nome?: SortOrder
     paisOrigem?: SortOrder
     anoFundacao?: SortOrder
-    tipo?: SortOrder
   }
 
   export type FabricanteAvgOrderByAggregateInput = {
@@ -6390,7 +6363,6 @@ export namespace Prisma {
     nome?: SortOrder
     paisOrigem?: SortOrder
     anoFundacao?: SortOrder
-    tipo?: SortOrder
   }
 
   export type FabricanteMinOrderByAggregateInput = {
@@ -6398,7 +6370,6 @@ export namespace Prisma {
     nome?: SortOrder
     paisOrigem?: SortOrder
     anoFundacao?: SortOrder
-    tipo?: SortOrder
   }
 
   export type FabricanteSumOrderByAggregateInput = {
@@ -6788,7 +6759,6 @@ export namespace Prisma {
     nome: string
     paisOrigem: string
     anoFundacao: number
-    tipo: string
   }
 
   export type FabricanteUncheckedCreateWithoutArmaInput = {
@@ -6796,7 +6766,6 @@ export namespace Prisma {
     nome: string
     paisOrigem: string
     anoFundacao: number
-    tipo: string
   }
 
   export type FabricanteCreateOrConnectWithoutArmaInput = {
@@ -6842,7 +6811,6 @@ export namespace Prisma {
     nome?: StringFieldUpdateOperationsInput | string
     paisOrigem?: StringFieldUpdateOperationsInput | string
     anoFundacao?: IntFieldUpdateOperationsInput | number
-    tipo?: StringFieldUpdateOperationsInput | string
   }
 
   export type FabricanteUncheckedUpdateWithoutArmaInput = {
@@ -6850,7 +6818,6 @@ export namespace Prisma {
     nome?: StringFieldUpdateOperationsInput | string
     paisOrigem?: StringFieldUpdateOperationsInput | string
     anoFundacao?: IntFieldUpdateOperationsInput | number
-    tipo?: StringFieldUpdateOperationsInput | string
   }
 
   export type TesteUpsertWithWhereUniqueWithoutArmaInput = {
@@ -6883,7 +6850,7 @@ export namespace Prisma {
   export type ArmaCreateWithoutFabricanteInput = {
     nome: string
     calibre: string
-    numDesparos: number
+    numDisparos: number
     testes?: TesteCreateNestedManyWithoutArmaInput
   }
 
@@ -6891,7 +6858,7 @@ export namespace Prisma {
     id?: number
     nome: string
     calibre: string
-    numDesparos: number
+    numDisparos: number
     testes?: TesteUncheckedCreateNestedManyWithoutArmaInput
   }
 
@@ -6928,7 +6895,7 @@ export namespace Prisma {
     id?: IntFilter<"Arma"> | number
     nome?: StringFilter<"Arma"> | string
     calibre?: StringFilter<"Arma"> | string
-    numDesparos?: IntFilter<"Arma"> | number
+    numDisparos?: IntFilter<"Arma"> | number
     fabricanteId?: IntFilter<"Arma"> | number
   }
 
@@ -6992,7 +6959,7 @@ export namespace Prisma {
   export type ArmaCreateWithoutTestesInput = {
     nome: string
     calibre: string
-    numDesparos: number
+    numDisparos: number
     fabricante: FabricanteCreateNestedOneWithoutArmaInput
   }
 
@@ -7000,7 +6967,7 @@ export namespace Prisma {
     id?: number
     nome: string
     calibre: string
-    numDesparos: number
+    numDisparos: number
     fabricanteId: number
   }
 
@@ -7047,7 +7014,7 @@ export namespace Prisma {
   export type ArmaUpdateWithoutTestesInput = {
     nome?: StringFieldUpdateOperationsInput | string
     calibre?: StringFieldUpdateOperationsInput | string
-    numDesparos?: IntFieldUpdateOperationsInput | number
+    numDisparos?: IntFieldUpdateOperationsInput | number
     fabricante?: FabricanteUpdateOneRequiredWithoutArmaNestedInput
   }
 
@@ -7055,7 +7022,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     nome?: StringFieldUpdateOperationsInput | string
     calibre?: StringFieldUpdateOperationsInput | string
-    numDesparos?: IntFieldUpdateOperationsInput | number
+    numDisparos?: IntFieldUpdateOperationsInput | number
     fabricanteId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -7090,13 +7057,13 @@ export namespace Prisma {
     id?: number
     nome: string
     calibre: string
-    numDesparos: number
+    numDisparos: number
   }
 
   export type ArmaUpdateWithoutFabricanteInput = {
     nome?: StringFieldUpdateOperationsInput | string
     calibre?: StringFieldUpdateOperationsInput | string
-    numDesparos?: IntFieldUpdateOperationsInput | number
+    numDisparos?: IntFieldUpdateOperationsInput | number
     testes?: TesteUpdateManyWithoutArmaNestedInput
   }
 
@@ -7104,7 +7071,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     nome?: StringFieldUpdateOperationsInput | string
     calibre?: StringFieldUpdateOperationsInput | string
-    numDesparos?: IntFieldUpdateOperationsInput | number
+    numDisparos?: IntFieldUpdateOperationsInput | number
     testes?: TesteUncheckedUpdateManyWithoutArmaNestedInput
   }
 
@@ -7112,7 +7079,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     nome?: StringFieldUpdateOperationsInput | string
     calibre?: StringFieldUpdateOperationsInput | string
-    numDesparos?: IntFieldUpdateOperationsInput | number
+    numDisparos?: IntFieldUpdateOperationsInput | number
   }
 
   export type TesteCreateManyClienteInput = {

@@ -6,7 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
+  output   = "../../node_modules/.prisma/client"
 }
 
 datasource db {
@@ -17,8 +17,11 @@ datasource db {
 model Arma {
   id            Int      @id @default(autoincrement())
   nome          String   @db.VarChar(80)
+  preco         Decimal      @db.Decimal(10, 2)
   calibre       String   @db.VarChar(20)
-  numDesparos   Int      
+  numDisparos   Int      
+  foto          String   
+  tipoArma      tipoArmas @default(PISTOLA)
   fabricante    Fabricante @relation(fields: [fabricanteId], references: [id])
   fabricanteId  Int     
   testes       Teste[]
@@ -30,10 +33,10 @@ model Fabricante {
   nome          String   @db.VarChar(80)
   paisOrigem    String   @db.VarChar(80)
   anoFundacao   Int      
-  tipo          String   @db.VarChar(20)
   arma          Arma[]
   @@map("fabricantes")
 }
+
 
 model Cliente {
   id            Int      @id @default(autoincrement())
@@ -53,4 +56,12 @@ model Teste {
   arma          Arma     @relation(fields: [armaId], references: [id])
   armaId        Int
   @@map("testes")
+}
+
+enum tipoArmas {
+  PISTOLA
+  REVOLVER
+  ESPINGARDA
+  CARABINA
+  FUZIL
 }

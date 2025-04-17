@@ -121,7 +121,7 @@ exports.Prisma.ArmaScalarFieldEnum = {
   id: 'id',
   nome: 'nome',
   calibre: 'calibre',
-  numDesparos: 'numDesparos',
+  numDisparos: 'numDisparos',
   fabricanteId: 'fabricanteId'
 };
 
@@ -129,8 +129,7 @@ exports.Prisma.FabricanteScalarFieldEnum = {
   id: 'id',
   nome: 'nome',
   paisOrigem: 'paisOrigem',
-  anoFundacao: 'anoFundacao',
-  tipo: 'tipo'
+  anoFundacao: 'anoFundacao'
 };
 
 exports.Prisma.ClienteScalarFieldEnum = {
