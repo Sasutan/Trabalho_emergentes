@@ -173,6 +173,17 @@ router.get("/pesquisa/:termo", async (req, res) => {
     }
 })
 
+router.get("/armas/:id", (req, res) => {
+    const id = Number(req.params.id);
+    const arma = armas.find((a) => a.id === id);
+  
+    if (!arma) {
+      return res.status(404).json({ error: "Arma não encontrada" });
+    }
+  
+    return res.json(arma);
+  });
+
 
  
 export default router
