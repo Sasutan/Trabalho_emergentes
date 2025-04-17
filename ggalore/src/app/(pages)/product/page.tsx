@@ -1,4 +1,3 @@
-import CardProduto from "@/components/CardProduto";
 import Estrela from "@/components/Estrela";
 import Image from "next/image";
 import Link from "next/link";
