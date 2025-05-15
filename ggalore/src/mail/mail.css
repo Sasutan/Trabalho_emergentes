@@ -1,0 +1,83 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0f0f0f;
+  font-family: Arial, sans-serif;
+  color: #fff;
+}
+
+.mail-section {
+  padding: 5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mail-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  padding: 0 1rem;
+  max-width: 640px;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #fff;
+  font-family: "Tinos", serif;
+  text-decoration: none;
+}
+
+.logo-icon {
+  color: oklch(0.62 0.2465 30.05);
+}
+
+.mail-content {
+  width: 100%;
+  background-color: #000;
+  border: 1px solid #333;
+  border-radius: 0.5rem;
+  padding: 3rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.mail-content h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+}
+
+.recovery-button {
+  display: block;
+  width: 50%;
+  margin: 0 auto 2.5rem;
+  padding: 0.625rem 1.25rem;
+  background-color: oklch(0.62 0.2465 30.05);
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.875rem;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.recovery-button:hover {
+  background-color: #e62424;
+}
+
+.disclaimer {
+  font-size: 0.875rem;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.signature {
+  font-weight: 500;
+}
