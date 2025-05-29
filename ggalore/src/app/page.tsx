@@ -4,10 +4,11 @@ import Filtro from "@/components/Filtro";
 import SearchBar from "@/components/SearchBar";
 import { ArmaItf } from "@/utils/types/ArmaItf";
 import { useEffect, useState } from "react";
+import { useClienteStore } from "@/context/ClienteContext";
 
 export default function Home() {
   const [armas, setArmas] = useState<ArmaItf[]>([])
-
+  const { logaCliente } = useClienteStore()
 
   useEffect(() => {
     async function buscaDados() {
@@ -17,7 +18,19 @@ export default function Home() {
       setArmas(dados)
     }
     buscaDados()
+
+        async function buscaCliente(id: string) {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_URL_API}/clientes/${id}`)
+      const dados = await response.json()
+      logaCliente(dados)
+    }
+    if (localStorage.getItem("clienteKey")) {
+      const idCliente = localStorage.getItem("clienteKey")
+      buscaCliente(idCliente as string)
+    }
   }, [])
+
+  
 
   const listaArmas = armas.map( arma => (
     <CardProduto data={arma} key={arma.id} />

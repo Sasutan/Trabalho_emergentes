@@ -121,6 +121,18 @@ router.get("/pesquisa/:termo", async (req, res) => {
   }
 });
 
+router.get("/:id", async (req, res) => {
+  const { id } = req.params
+  try {
+    const armas = await prisma.arma.findFirst({
+      where: { id: Number(id) }
+    })
+    res.status(200).json(armas)
+  } catch (error) {
+    res.status(400).json(error)
+  }
+})
+
 // router.get("/:id", async (req, res) => {
 //   const id = Number(req.params.id);
 

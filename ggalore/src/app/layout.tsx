@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header2 from "@/components/Header2";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Toaster } from "sonner";
 
@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className="bg-background-gray">
-        <Header2 />
+        <Header />
         {children}
         <Footer />
         <Toaster />

@@ -1,35 +1,59 @@
 "use client";
 
+import { useClienteStore } from "@/context/ClienteContext";
+import { toast } from "sonner"
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+
+
+type Inputs = {
+    email: string
+    senha: string
+    manter: boolean
+}
+
 export default function Login() {
-  async function onsubmit(e) {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const data = {
-      email: formData.get("email"),
-      password: formData.get("password"),
-    };
+    const { register, handleSubmit } = useForm<Inputs>()    
+    const { logaCliente } = useClienteStore()
 
-    try {
-      const response = await fetch("http://localhost:3001/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+    const router = useRouter()
 
-      if (!response.ok) throw new Error("Erro ao fazer login");
+    async function verificaLogin(data: Inputs) {
+        // alert(`${data.email} ${data.senha} ${data.manter}`)
+        const response = await 
+          fetch(`${process.env.NEXT_PUBLIC_URL_API}/login`, {
+            headers: {"Content-Type": "application/json"},
+            method: "POST",
+            body: JSON.stringify({ email: data.email, senha: data.senha })
+          })
+        
+        // console.log(response)
+        if (response.status == 200) {
+            // toast.success("Ok!")            
+            const dados = await response.json()
 
-      const result = await response.json();
-      alert("Login realizado com sucesso!");
+            // "coloca" os dados do cliente no contexto
+            logaCliente(dados)
+            
+            // se o cliente indicou que quer se manter conectado
+            // salvamos os dados (id) dele em localStorage
+            if (data.manter) {
+                localStorage.setItem("clienteKey", dados.id)
+            } else {
+                // se indicou que não quer permanecer logado e tem
+                // uma chave (anteriormente) salva, remove-a
+                if (localStorage.getItem("clienteKey")) {
+                    localStorage.removeItem("clienteKey")
+                }
+            }
 
-      // exemplo de ação após login:
-      console.log(result);
-      // ou redirecionar:
-      // window.location.href = "/dashboard";
-    } catch (err) {
-      alert("Falha ao fazer login");
-      console.error(err);
+            // carrega a página principal, após login do cliente
+            router.push("/")
+        } else {
+            toast.error("Erro... Login ou senha incorretos")
+        }
     }
-  }
+
 
   return (
     <section className=" py-20 flex items-center justify-center">
@@ -63,7 +87,7 @@ export default function Login() {
             <h1 className="text-xl font-bold leading-tight tracking-tight text-white md:text-2xl text-center">
               Entrar na sua conta
             </h1>
-            <form className="space-y-7" action="#" onSubmit={onsubmit}>
+            <form className="space-y-7" action="#" onSubmit={handleSubmit(verificaLogin)}>
               <div>
                 <label
                   htmlFor="email"
@@ -73,11 +97,11 @@ export default function Login() {
                 </label>
                 <input
                   type="email"
-                  name="email"
                   id="email"
                   className="bg-gray-50 border border-gray-300 text-gray-900 rounded-sm block w-full p-2.5"
                   placeholder="name@company.com"
                   required
+                  {...register("email")}
                 />
               </div>
               <div>
@@ -89,11 +113,11 @@ export default function Login() {
                 </label>
                 <input
                   type="password"
-                  name="password"
                   id="password"
                   placeholder="••••••••"
                   className="bg-gray-50 border border-gray-300 text-gray-900 rounded-sm block w-full p-2.5"
                   required
+                  {...register("senha")}
                 />
               </div>
               <div className="flex items-center justify-between">
@@ -104,6 +128,7 @@ export default function Login() {
                       aria-describedby="remember"
                       type="checkbox"
                       className="w-4 h-4 border border-gray-300 rounded bg-gray-50"
+                      {...register("manter")} 
                     />
                   </div>
                   <div className="ml-3 text-sm">
