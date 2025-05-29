@@ -39,6 +39,30 @@ export default function Testes() {
       <td className="px-6 py-4">
         <p><b>{teste.observacoes}</b></p>
         <p><i>Marcado em: {dataDMA(teste.createdAt)}</i></p>
+        <button
+          className="mt-2 px-4 py-2 text-white bg-red-600 hover:bg-red-700 rounded"
+          onClick={async () => {
+            const confirmDelete = window.confirm("Tem certeza que deseja excluir este teste?");
+            if (confirmDelete) {
+              try {
+                const response = await fetch(`${process.env.NEXT_PUBLIC_URL_API}/testes/${teste.id}`, {
+                  method: "DELETE",
+                });
+                if (response.ok) {
+                  setTestes(prev => prev.filter(t => t.id !== teste.id));
+                  alert("Teste excluído com sucesso!");
+                } else {
+                  alert("Erro ao excluir o teste.");
+                }
+              } catch (error) {
+                console.error("Erro ao excluir o teste:", error);
+                alert("Erro ao excluir o teste.");
+              }
+            }
+          }}
+        >
+          Excluir
+        </button>
       </td>
       <td className="px-6 py-4">
         {teste.resultado ?

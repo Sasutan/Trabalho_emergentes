@@ -1,35 +1,45 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 export default function Register() {
+  const router = useRouter();
+
   async function onsubmit(e) {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const data = {
-      username: formData.get("username"),
+      nome: formData.get("username"),
       email: formData.get("email"),
-      password: formData.get("password"),
+      senha: formData.get("password"),
     };
 
     const confirmPassword = formData.get("confirmPassword");
 
-    if (data.password !== confirmPassword) {
+    // Validação de senha no frontend
+    if (data.senha !== confirmPassword) {
       alert("As senhas não coincidem!");
       return;
     }
 
     try {
-      const response = await fetch("http://localhost:3001/register", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_URL_API}/registro`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
 
-      if (!response.ok) throw new Error("Erro ao cadastrar");
-
       const result = await response.json();
+
+      if (!response.ok) {
+        alert(result.error || "Erro ao cadastrar");
+        return;
+      }
+
+      // Armazena o token no localStorage e redireciona para a página inicial
+      localStorage.setItem("token", result.token);
       alert("Cadastro realizado com sucesso!");
-      console.log(result);
-      // window.location.href = "/login";
+      router.push("/");
     } catch (err) {
       alert("Falha ao cadastrar");
       console.error(err);
@@ -37,8 +47,8 @@ export default function Register() {
   }
 
   return (
-    <section className="py-20  flex items-center justify-center">
-      <div className="flex flex-col items-center justify-center w-full px-2 sm:px-6  mx-auto lg:py-0">
+    <section className="py-20 flex items-center justify-center">
+      <div className="flex flex-col items-center justify-center w-full px-2 sm:px-6 mx-auto lg:py-0">
         <a
           href="#"
           className="flex items-center mb-6 text-4xl gap-2 font-semibold text-white font-tinos"
