@@ -44,7 +44,7 @@ export default function PasswordRecoveryMail() {
 
           <p className="font-medium">
             Atenciosamente, <br />
-            equipe Gun's Galore
+            equipe Gun&apos;s Galore
           </p>
         </div>
       </div>
